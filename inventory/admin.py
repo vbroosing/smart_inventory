@@ -16,8 +16,18 @@ class StockAdmin(admin.ModelAdmin):
 class KardexAdmin(admin.ModelAdmin):
     list_display = ('product', 'warehouse', 'type', 'quantity', 'created_at', 'created_by')
     list_filter = ('type', 'warehouse', 'created_at')
-    # Para que nadie falsee la fecha
-    # readonly_fields = ('created_at', 'created_by') 
+    
+    # Mantenemos created_at como readonly siempre
+    readonly_fields = ('created_at', 'created_by')
+
+    def save_model(self, request, obj, form, change):
+        """
+        Este método se ejecuta ANTES de guardar en la base de datos.
+        Aquí inyectamos el usuario logueado automáticamente.
+        """
+        obj.created_by = request.user
+        
+        super().save_model(request, obj, form, change)
 
 # Registro simple para los demás
 admin.site.register(Category)
