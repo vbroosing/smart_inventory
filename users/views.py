@@ -22,6 +22,16 @@ def signin(req):
                 return redirect('dashboard')
         except:
             return redirect('signin')
+        
+def signout(req):
+    logout(req)
+    return render(req, 'signin.html')
 
 def dashboard(req):
-    return render(req, 'dashboard.html')
+    
+    user = {
+        'username': 'Pedro Concha',
+        'email': 'pconcha@dominio.cl' 
+    }
+
+    return render(req, 'dashboard.html', {'user': user})
