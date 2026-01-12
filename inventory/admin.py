@@ -1,17 +1,3 @@
-# from django.contrib import admin
-# from .models import Category, Brand, Product, Warehouse, Stock, Kardex
-
-# @admin.register(Product)
-# class ProductAdmin(admin.ModelAdmin):
-#     list_display = ('sku', 'name', 'brand', 'category', 'selling_price', 'is_active')
-#     search_fields = ('sku', 'name', 'brand__name') # Permite buscar por nombre de marca
-#     list_filter = ('brand', 'category', 'is_active')
-
-# @admin.register(Stock)
-# class StockAdmin(admin.ModelAdmin):
-#     list_display = ('product', 'warehouse', 'quantity')
-#     list_filter = ('warehouse',)
-
 from django.contrib import admin
 from inventory.models import Category, Brand, Product, Warehouse, Stock, Kardex
 
