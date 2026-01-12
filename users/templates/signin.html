@@ -3,8 +3,96 @@
 
 {% block title %}SignIn{% endblock %}
 
-{% block head %}{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/users/fonts_material.cdn.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/signin.css' %}">
+{% endblock %}
 
 {% block body %}
-<h1>Hola desde signin</h1>
+<div class="row login-container mb-0">
+    <div class="col s12 m8 l8 visual-side">
+        <div class="network-container">
+            <div class="core-hub z-depth-3">
+                <h4>Smart<br>Inventory</h4>
+            </div>
+            
+            <div class="module-card card-finance">
+                <i class="material-icons">attach_money</i>
+                <span>Finanzas</span>
+            </div>
+            <div class="module-card card-inv">
+                <i class="material-icons">inventory_2</i>
+                <span>Inventario</span>
+            </div>
+            <div class="module-card card-hr">
+                <i class="material-icons">people</i>
+                <span>RRHH</span>
+            </div>
+            <div class="module-card card-sales">
+                <i class="material-icons">filter_alt</i>
+                <span>Ventas</span>
+            </div>
+            <div class="module-card card-buy">
+                <i class="material-icons">shopping_cart</i>
+                <span>Compras</span>
+            </div>
+            <div class="module-card card-analytics">
+                <i class="material-icons">analytics</i>
+                <span>Analítica</span>
+            </div>
+        </div>
+        
+        <div class="bg-pattern"></div>
+    </div>
+
+    <!--FORMULARIO DE INGRESO -->
+    <div class="col s12 m4 l4 login-side valign-wrapper">
+        <div class="row" style="width: 100%; padding: 0 10%;">
+            <div class="col s12 center-align mb-5">
+                <h5 class="grey-text text-darken-3" style="font-weight: 600;">Bienvenido</h5>
+                <p class="grey-text">Ingresa tus credenciales para acceder.</p>
+            </div>
+
+
+            <form action="/users/dashboard" method="POST" class="col s12">
+                {% csrf_token %}
+                {{ error }} 
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">person_outline</i>
+                    <input id="username" type="text" name="username" class="validate">
+                    <label for="username">Usuario</label>
+                </div>
+                
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input id="password" type="password" name="password" class="validate">
+                    <label for="password">Contraseña</label>
+                </div>
+
+                {% comment %} <div class="col s12 right-align" style="margin-bottom: 20px;">
+                    <a href="#!" class="red-text text-darken-2" style="font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div> {% endcomment %}
+
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light red darken-3 z-depth-1" type="submit" name="action" style="width: 100%; border-radius: 50px; height: 50px;">
+                        Ingresar
+                    </button>
+                </div>
+            </form>
+            
+            <div class="col s12 center-align mt-5" style="margin-top: 40px;">
+                <small class="grey-text text-lighten-1">© 2026 Smart Inventory ERP</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        M.updateTextFields();
+    });
+</script>
+
+
 {% endblock %}
