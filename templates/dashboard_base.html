@@ -9,7 +9,119 @@
 
 
 {% block body %}
+    <ul id="slide-out" class="sidenav sidenav-fixed sidebar-gradient">
+        <li>
+            <div class="user-view">
+                <div class="background-overlay"></div>
+                <a href="#user"><img class="circle" src="https://ui-avatars.com/api/?name=Admin+User&background=fff&color=b71c1c"></a>
+                <a href="#name"><span class="white-text name">{{ user.username }}</span></a>
+                <a href="#email"><span class="white-text email">{{ user.email }}</span></a>
+            </div>
+        </li>
+
+        <li><a class="subheader white-text">GESTIÓN DE INVENTARIO</a></li>
+
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                    
+                <li class="active"> <a class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">inventory_2</i>Productos
+                        <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="active-item"><a href="#!" class="waves-effect">Listado General</a></li>
+                            <li><a href="#!" class="waves-effect">Nuevo Producto</a></li>
+                            <li><a href="#!" class="waves-effect">Ajuste Masivo Precios</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">category</i>Categorías
+                        <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!" class="waves-effect">Ver Categorías</a></li>
+                            <li><a href="#!" class="waves-effect">Árbol de Categorías</a></li>
+                            <li><a href="#!" class="waves-effect">Nueva Categoría</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">verified</i>Marcas
+                        <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!" class="waves-effect">Listado de Marcas</a></li>
+                            <li><a href="#!" class="waves-effect">Nueva Marca</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">warehouse</i>Bodegas
+                        <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!" class="waves-effect">Gestionar Bodegas</a></li>
+                            <li><a href="#!" class="waves-effect">Transferencias</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">analytics</i>Control Stock
+                        <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!" class="waves-effect">Consultar Stock Actual</a></li>
+                            <li><a href="#!" class="waves-effect">Movimientos (Kardex)</a></li>
+                            <li><a href="#!" class="waves-effect">Alertas Stock Mínimo</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <nav class="white z-depth-1 top-nav">
+        <div class="nav-wrapper">
+            <div class="col s12">
+            
+                <a href="#!" class="breadcrumb red-text text-darken-3">Inventario</a>
+                <a href="#!" class="breadcrumb red-text text-darken-3">Productos</a>
+                <a href="#!" class="breadcrumb grey-text text-darken-3">Listado</a>
+
+                <ul class="right">
+                    <li>
+                        <a href="#!">
+                            <i class="material-icons grey-text text-darken-2">notifications</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!">
+                            <i class="material-icons grey-text text-darken-2">exit_to_app</i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
 
     {% block dashboard %}{% endblock %}
+
+    <footer><center><h3>PRONTO UN FOOTER .. .</h3></center></footer>
 
 {% endblock %}
