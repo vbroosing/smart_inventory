@@ -350,3 +350,26 @@ tr.inactive-row .p-icon {
 .breadcrumb:last-child {
     color: #444 !important; 
 }
+
+/* Ajuste para que el contenido no quede debajo del Sidebar */
+header, main, footer, nav {
+    padding-left: 300px; /* Debe coincidir con el ancho de tu sidebar */
+}
+
+/* En pantallas medianas/móviles (tablets y celulares), quitamos ese margen 
+   porque el menú se oculta automáticamente */
+@media only screen and (max-width : 992px) {
+    header, main, footer, nav {
+        padding-left: 0;
+    }
+}
+
+/* Asegurar que el texto del perfil esté visible encima de la imagen */
+.user-view .name, 
+.user-view .email {
+    position: relative; /* Eleva el texto sobre el fondo absoluto */
+    z-index: 5;         /* Asegura que esté en una capa superior */
+    color: #ffffff;     /* O usa #000000 si el fondo es claro */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para leerse mejor sobre imágenes */
+    display: block;     /* Asegura que ocupen su propio renglón */
+}
