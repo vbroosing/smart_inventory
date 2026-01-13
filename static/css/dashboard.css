@@ -331,3 +331,22 @@ tr.inactive-row .p-icon {
 .top-nav ul.right {
     margin-right: 0;
 }
+
+/* Ajuste para que los iconos no se peguen al borde derecho de la pantalla */
+.top-nav .nav-wrapper {
+    padding-right: 0 !important; /* El padding lo maneja el col s12 internamente */
+}
+
+.top-nav .col.s12 {
+    padding-left: 20px;
+    padding-right: 20px; /* Margen derecho igual al del contenido de abajo */
+}
+
+/* Color de las migas de pan activos/inactivos para asegurar legibilidad */
+.breadcrumb {
+    font-size: 1.1rem;
+}
+/* El último breadcrumb (Listado) debe ser gris oscuro */
+.breadcrumb:last-child {
+    color: #444 !important; 
+}

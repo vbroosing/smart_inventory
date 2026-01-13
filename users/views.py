@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-
-
 
 # Create your views here.
 def signin(req):
@@ -26,12 +24,3 @@ def signin(req):
 def signout(req):
     logout(req)
     return render(req, 'signin.html')
-
-def dashboard(req):
-    
-    user = {
-        'username': 'Pedro Concha',
-        'email': 'pconcha@dominio.cl' 
-    }
-
-    return render(req, 'dashboard.html', {'user': user})

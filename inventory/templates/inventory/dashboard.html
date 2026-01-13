@@ -1,0 +1,251 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+
+
+{% block head %}
+    {{% block.super %}}
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'inventory/css/dashboard.css' %}">
+{% endblock %}
+
+{% block dashboard %}
+    <ul id="slide-out" class="sidenav sidenav-fixed sidebar-gradient">
+            <li>
+                <div class="user-view">
+                    <div class="background-overlay"></div>
+                    <a href="#user"><img class="circle" src="https://ui-avatars.com/api/?name=Admin+User&background=fff&color=b71c1c"></a>
+                    <a href="#name"><span class="white-text name">{{ user.username }}</span></a>
+                    <a href="#email"><span class="white-text email">{{ user.email }}</span></a>
+                </div>
+            </li>
+
+            <li><a class="subheader white-text">GESTIÓN DE INVENTARIO</a></li>
+
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    
+                    <li class="active"> <a class="collapsible-header white-text waves-effect waves-light">
+                            <i class="material-icons white-text">inventory_2</i>Productos
+                            <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="active-item"><a href="#!" class="waves-effect">Listado General</a></li>
+                                <li><a href="#!" class="waves-effect">Nuevo Producto</a></li>
+                                <li><a href="#!" class="waves-effect">Ajuste Masivo Precios</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="collapsible-header white-text waves-effect waves-light">
+                            <i class="material-icons white-text">category</i>Categorías
+                            <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#!" class="waves-effect">Ver Categorías</a></li>
+                                <li><a href="#!" class="waves-effect">Árbol de Categorías</a></li>
+                                <li><a href="#!" class="waves-effect">Nueva Categoría</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="collapsible-header white-text waves-effect waves-light">
+                            <i class="material-icons white-text">verified</i>Marcas
+                            <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#!" class="waves-effect">Listado de Marcas</a></li>
+                                <li><a href="#!" class="waves-effect">Nueva Marca</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="collapsible-header white-text waves-effect waves-light">
+                            <i class="material-icons white-text">warehouse</i>Bodegas
+                            <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#!" class="waves-effect">Gestionar Bodegas</a></li>
+                                <li><a href="#!" class="waves-effect">Transferencias</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="collapsible-header white-text waves-effect waves-light">
+                            <i class="material-icons white-text">analytics</i>Control Stock
+                            <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#!" class="waves-effect">Consultar Stock Actual</a></li>
+                                <li><a href="#!" class="waves-effect">Movimientos (Kardex)</a></li>
+                                <li><a href="#!" class="waves-effect">Alertas Stock Mínimo</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <main>
+            <nav class="white z-depth-1 top-nav">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                
+                <a href="#!" class="breadcrumb red-text text-darken-3">Inventario</a>
+                <a href="#!" class="breadcrumb red-text text-darken-3">Productos</a>
+                <a href="#!" class="breadcrumb grey-text text-darken-3">Listado</a>
+
+                <ul class="right">
+                    <li>
+                        <a href="#!">
+                            <i class="material-icons grey-text text-darken-2">notifications</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!">
+                            <i class="material-icons grey-text text-darken-2">exit_to_app</i>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+            <div class="container-fluid" style="padding: 20px;">
+                
+            <div class="row valign-wrapper" style="margin-bottom: 20px; margin-top: 20px;">
+        
+            <div class="col s12 m6">
+                <h4 class="page-title" style="margin: 0;">Gestión de Productos</h4>
+                <p class="grey-text" style="margin: 5px 0 0 0;">Administra el catálogo, precios y estado.</p>
+            </div>
+
+            <div class="col s12 m6 right-align">
+                <a class="btn waves-effect waves-light red darken-3 round-btn icon-left z-depth-2">
+                    <i class="material-icons left">add</i> Nuevo Producto
+                </a>
+            </div>
+
+            </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card table-card">
+                            <div class="card-content">
+                                <div class="row table-filters">
+                                    <div class="input-field col s12 m4">
+                                        <i class="material-icons prefix tiny-icon">search</i>
+                                        <input id="search" type="text" placeholder="Buscar por SKU, Nombre...">
+                                    </div>
+                                    <div class="input-field col s12 m3">
+                                        <select>
+                                            <option value="" disabled selected>Filtrar Marca</option>
+                                            <option value="1">Sony</option>
+                                            <option value="2">Samsung</option>
+                                            <option value="3">Logitech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <table class="highlight responsive-table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Producto</th>
+                                            <th>SKU / UPC</th>
+                                            <th>Categoría</th>
+                                            <th>Marca</th>
+                                            <th>Precio Venta</th>
+                                            <th class="center-align">Estado</th>
+                                            <th class="right-align">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="grey-text">#1045</td>
+                                            <td>
+                                                <div class="product-cell">
+                                                    <div class="p-icon blue lighten-5 blue-text"><i class="material-icons">laptop</i></div>
+                                                    <div class="p-info">
+                                                        <span class="p-name">Lenovo Legion 5</span>
+                                                        <small class="grey-text">Gaming Laptop</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="chip-sku">LN-2026-X</span></td>
+                                            <td>Notebooks</td>
+                                            <td>Lenovo</td>
+                                            <td>$ 950.000</td>
+                                            <td class="center-align">
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" checked>
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="right-align action-btns">
+                                                <a class="btn-floating btn-small waves-effect waves-dark white z-depth-0"><i class="material-icons grey-text text-darken-2">visibility</i></a>
+                                                <a class="btn-floating btn-small waves-effect waves-dark white z-depth-0"><i class="material-icons blue-text">edit</i></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="inactive-row">
+                                            <td class="grey-text">#1042</td>
+                                            <td>
+                                                <div class="product-cell">
+                                                    <div class="p-icon grey lighten-4 grey-text"><i class="material-icons">mouse</i></div>
+                                                    <div class="p-info">
+                                                        <span class="p-name">Mouse Genérico USB</span>
+                                                        <small class="grey-text">Básico</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="chip-sku">GEN-001</span></td>
+                                            <td>Periféricos</td>
+                                            <td>Genérico</td>
+                                            <td>$ 4.500</td>
+                                            <td class="center-align">
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="right-align action-btns">
+                                                <a class="btn-floating btn-small waves-effect waves-dark white z-depth-0"><i class="material-icons grey-text text-darken-2">visibility</i></a>
+                                                <a class="btn-floating btn-small waves-effect waves-dark white z-depth-0"><i class="material-icons blue-text">edit</i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-action right-align">
+                                <ul class="pagination">
+                                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                    <li class="active red darken-3"><a href="#!">1</a></li>
+                                    <li class="waves-effect"><a href="#!">2</a></li>
+                                    <li class="waves-effect"><a href="#!">3</a></li>
+                                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <script src="{% static 'inventory/js/dashboard.js' %}"></script>
+        
+{% endblock %}

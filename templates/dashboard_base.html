@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head %}
+    {{% block.super %}}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+    {% block dashboard %}{% endblock %}
+
+{% endblock %}

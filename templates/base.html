@@ -5,12 +5,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/materialize.cdn.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fonts_material.cdn.css' %}">
+        <link rel="stylesheet" href="{% static 'css/users/icons_material.cdn.css' %}">
 
         {% block head %}{% endblock %}
-        
-        <link rel="stylesheet" href="{% static 'css/base/materialize.cdn.css' %}">
 
     </head>
     <body>
@@ -18,6 +17,5 @@
         {% block body %}{% endblock %}
 
         <script src="{% static 'js/materialize.cdn.js' %}"></script>
-
     </body>
 </html>
