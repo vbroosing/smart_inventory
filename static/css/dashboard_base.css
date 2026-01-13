@@ -373,3 +373,28 @@ header, main, footer, nav {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para leerse mejor sobre imágenes */
     display: block;     /* Asegura que ocupen su propio renglón */
 }
+
+/* --- AJUSTE ESTRUCTURAL (Desacoplar navbar y contenido) --- */
+
+/* Aplicamos el margen a todo lo que no sea el menú lateral */
+header, main, footer, nav {
+    padding-left: var(--sidebar-width); /* Son tus 280px */
+    transition: padding-left 0.3s; /* Suavidad al abrir/cerrar */
+}
+
+/* En pantallas chicas (Tablets/Móviles) quitamos ese margen */
+@media only screen and (max-width : 992px) {
+    header, main, footer, nav {
+        padding-left: 0;
+    }
+}
+
+/* --- CORRECCIÓN USUARIO INVISIBLE --- */
+/* Esto fuerza al texto a estar "encima" de cualquier capa de fondo */
+.user-view .name, 
+.user-view .email {
+    position: relative;
+    z-index: 5;          /* Capa superior */
+    display: block;      /* Que ocupen su propia línea */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra para mejor lectura */
+}
