@@ -3,10 +3,11 @@
 
 
 {% block head %}
-    {{% block.super %}}
+    {{ block.super }}
     <title>Dashboard</title>
     <link rel="stylesheet" href="{% static 'inventory/css/dashboard.css' %}">
-{% endblock %}
+{% endblock %} 
+
 
 {% block dashboard %}
     <main>
@@ -137,6 +138,6 @@
         </div>
     </main>
 
-    <script src="{% static 'inventory/js/dashboard.js' %}"></script>
+    
     
 {% endblock %}

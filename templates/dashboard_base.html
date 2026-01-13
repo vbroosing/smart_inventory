@@ -3,8 +3,7 @@
 
 
 {% block head %}
-    {{% block.super %}}
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard_base.css' %}">
 {% endblock %}
 
 
@@ -123,5 +122,7 @@
     {% block dashboard %}{% endblock %}
 
     <footer><center><h3>PRONTO UN FOOTER .. .</h3></center></footer>
+
+    <script src="{% static 'js/dashboard_base.js' %}"></script>
 
 {% endblock %}
