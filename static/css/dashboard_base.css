@@ -398,3 +398,73 @@ header, main, footer, nav {
     display: block;      /* Que ocupen su propia línea */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra para mejor lectura */
 }
+
+/* --- CORRECCIÓN VISIBILIDAD USUARIO --- */
+
+/* 1. Aseguramos que el contenedor del usuario maneje bien las capas */
+.user-view {
+    position: relative; /* Necesario para que los hijos absolutos se guíen por él */
+    overflow: visible;  /* IMPORTANTE: Permite ver contenido si se sale un poco */
+    z-index: 1;
+}
+
+/* 2. El Overlay debe ir AL FONDO y no ocupar espacio físico (flotar) */
+.user-view .background-overlay {
+    position: absolute; /* Flota para no empujar la foto y el texto */
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Se va al fondo, detrás de todo */
+    /* Si no tiene color definido, agrégale uno temporal para probar: */
+    /* background-color: rgba(0,0,0,0.2); */ 
+}
+
+/* 3. El texto (Nombre y Correo) debe estar ENCIMA de todo */
+.user-view .name, 
+.user-view .email {
+    position: relative; /* Le permite usar z-index */
+    z-index: 10;        /* Capa superior máxima */
+    display: block;     /* Asegura que ocupen su propia línea */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Sombra para resaltar sobre cualquier fondo */
+}
+
+/* Ajuste extra: Subir un poco el texto si está muy separado de la foto */
+.user-view .name {
+    margin-top: 10px; 
+}
+
+/* --- CORRECCIÓN DE COLOR (Fondo y Texto) --- */
+
+.sidebar-gradient {
+    /* 1. Color de respaldo OBLIGATORIO por si falla el degradado o las variables */
+    background-color: #b71c1c !important; 
+    /* 2. El degradado original */
+    background: linear-gradient(160deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+}
+
+.user-view .name, 
+.user-view .email {
+    /* 3. Forzamos el color blanco y le damos sombra negra para que se lea SIEMPRE */
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8); /* Sombra fuerte */
+    font-weight: 500;
+    
+    /* Aseguramos que estén encima de cualquier capa rara */
+    position: relative; 
+    z-index: 99;
+}
+
+/* --- AJUSTE ESTRUCTURAL (Desacoplar navbar) --- */
+
+/* Empujamos todo el contenido 280px a la derecha para dar espacio al menú */
+header, main, footer, nav {
+    padding-left: 280px; 
+}
+
+/* En celulares/tablets quitamos ese espacio porque el menú se esconde */
+@media only screen and (max-width : 992px) {
+    header, main, footer, nav {
+        padding-left: 0;
+    }
+}
