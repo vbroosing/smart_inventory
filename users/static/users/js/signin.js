@@ -1,3 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-        M.updateTextFields();
-    });
+// document.addEventListener('DOMContentLoaded', function() {
+//         M.updateTextFields();
+//     });
