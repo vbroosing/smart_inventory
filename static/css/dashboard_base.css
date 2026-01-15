@@ -1,0 +1,140 @@
+/* ==========================================================================
+   SMART INVENTORY: DASHBOARD THEME & LAYOUT
+   ========================================================================== */
+
+:root {
+    --primary-red: #d32f2f;
+    --primary-red-dark: #b71c1c;
+    --text-on-red: #ffffff;
+    --secondary-red: #9C0000;
+    
+    /* Variables dinámicas para controlar el ancho */
+    --sidenav-width-expanded: 300px;
+    --sidenav-width-mini: 80px; /* Ancho suficiente para iconos centrados */
+    --sidenav-width-current: 300px; /* Valor inicial por defecto */
+}
+
+/* ==========================================================================
+   1. LAYOUT & NAVBAR ALIGNMENT
+   ========================================================================== */
+/* Aplicamos la transición a padding-left para que todo el contenido (Navbar y Main)
+   se mueva junto cuando el menú cambia de tamaño */
+header, main, footer {
+    padding-left: var(--sidenav-width-current);
+    transition: padding-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Navbar específica: Asegura que ocupe todo el espacio disponible */
+header nav {
+    width: 100%;
+}
+
+/* En móviles, eliminamos el padding para aprovechar la pantalla */
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+
+/* ==========================================================================
+   2. SIDENAV (BARRA LATERAL)
+   ========================================================================== */
+.sidenav.sidenav-fixed {
+    width: var(--sidenav-width-current);
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    border: none;
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease;
+    overflow-x: hidden; /* Oculta textos largos durante la animación */
+}
+
+/* --- Estilos de Enlaces e Iconos --- */
+.sidenav li a {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Evita que el texto salte de línea */
+    overflow: hidden;
+    padding: 0 32px; /* Padding estándar */
+    transition: padding 0.3s ease, background-color 0.2s;
+}
+
+.sidenav li a i, 
+.sidenav li a i.material-icons {
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 20px;
+    min-width: 24px; /* Asegura espacio fijo para el icono */
+    transition: margin 0.3s ease;
+}
+
+/* --- Estilos para el ESTADO MINI (Clase .is-mini) --- */
+/* Cuando el body tiene la clase 'is-mini', ajustamos los estilos internos */
+body.is-mini .sidenav li a {
+    padding: 0; /* Quitamos padding lateral */
+    justify-content: center; /* Centramos el icono */
+}
+
+body.is-mini .sidenav li a i {
+    margin-right: 0; /* Quitamos margen derecho del icono */
+}
+
+body.is-mini .sidenav li a span, 
+body.is-mini .sidenav .user-view, 
+body.is-mini .sidenav .subheader,
+body.is-mini .sidenav .arrow-icon {
+    display: none; /* Ocultamos todo lo que no sea el icono principal */
+}
+
+body.is-mini .sidenav .brand-logo {
+    display: none;
+}
+
+.collapsible-body{
+    background-color: var(--secondary-red);
+}
+
+/* Ajustes para submenús en modo mini */
+body.is-mini .sidenav li a {
+    padding: 0;
+    background-color: rgba(0,0,0,0.2); /* Diferenciación sutil */
+}
+
+/* --- Estilos para el ESTADO OCULTO (Clase .is-hidden) --- */
+body.is-hidden .sidenav.sidenav-fixed {
+    transform: translateX(-105%); /* Movemos fuera de la pantalla */
+}
+
+/* ==========================================================================
+   3. ESTILOS ADICIONALES (User View, Collapsibles)
+   ========================================================================== */
+.sidenav .user-view {
+    padding: 32px 32px 20px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.sidenav .user-view .name { font-weight: 600; }
+.sidenav .user-view .email { font-size: 0.85rem; opacity: 0.8; }
+
+.sidenav .collapsible-header i.arrow-icon {
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+.sidenav .collapsible-header.active i.arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* Botón de Toggle Personalizado (Estilo Flotante o en Navbar) */
+.menu-toggle-btn {
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.navbar-space-left {
+    margin-left: 2rem;
+}
+
+.element-lateral-bar-color {
+    color: #9C0000;
+}
