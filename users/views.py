@@ -5,6 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 def signin(req):
 
+    
+
     form = AuthenticationForm()
 
     if req.method == 'GET':
@@ -17,7 +19,7 @@ def signin(req):
             else:
 
                 login(req, user)
-                return redirect('dashboard')
+                return render(req, 'inventory/dashboard')
         except:
             return redirect('signin')
         

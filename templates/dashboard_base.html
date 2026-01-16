@@ -8,6 +8,8 @@
 
 
 {% block body %}
+{% comment %} {% with url_name=request.resolver_match.url_name %} {% endcomment %}
+
     <ul id="slide-out" class="sidenav sidenav-fixed sidebar-gradient">
         <li>
             <div class="user-view">
@@ -20,18 +22,25 @@
 
         <li><a class="subheader white-text">GESTIÓN DE INVENTARIO</a></li>
 
+        
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
+                
+                <li class="no-padding white-text">
+                    <a href="/inventory/dashboard" class="collapsible-header white-text waves-effect waves-light">
+                        <i class="material-icons white-text">dashboard</i>Dashboard
+                    </a>  
+                </li>
                     
-                <li class="active"> <a class="collapsible-header white-text waves-effect waves-light">
+                <li > <a class="collapsible-header white-text waves-effect waves-light">
                         <i class="material-icons white-text">inventory_2</i>Productos
                         <i class="material-icons right white-text arrow-icon">arrow_drop_down</i>
                     </a>
                     <div class="collapsible-body">
                         <ul>
-                            <li class="active-item"><a href="#!" class="waves-effect element-lateral-bar-color">Listado General</a></li>
-                            <li><a href="#!" class="waves-effect element-lateral-bar-color">Nuevo Producto</a></li>
-                            <li><a href="#!" class="waves-effect element-lateral-bar-color">Ajuste Masivo Precios</a></li>
+                            <li class="active-item"><a href="/inventory/products" class="waves-effect element-lateral-bar-color">Listado General</a></li>
+                            <li><a href="/inventory/add-product" class="waves-effect element-lateral-bar-color">Nuevo Producto</a></li>
+                            <li><a href="/inventory/update-product" class="waves-effect element-lateral-bar-color">Edición Masiva</a></li>
                         </ul>
                     </div>
                 </li>
@@ -43,9 +52,9 @@
                     </a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!" class="waves-effect element-lateral-bar-color">Ver Categorías</a></li>
-                            <li><a href="#!" class="waves-effect element-lateral-bar-color">Árbol de Categorías</a></li>
-                            <li><a href="#!" class="waves-effect element-lateral-bar-color">Nueva Categoría</a></li>
+                            <li><a href="/inventory/categories" class="waves-effect element-lateral-bar-color">Ver Categorías</a></li>
+                            <li><a href="/inventory/categories-tree" class="waves-effect element-lateral-bar-color">Árbol de Categorías</a></li>
+                            <li><a href="/inventory/add-category" class="waves-effect element-lateral-bar-color">Nueva Categoría</a></li>
                         </ul>
                     </div>
                 </li>
@@ -99,7 +108,7 @@
             <div class="col s12 navbar-space-left">
             
                 <a href="#!" class="breadcrumb red-text text-darken-3">Inventario</a>
-                <a href="#!" class="breadcrumb red-text text-darken-3">Productos</a>
+                <a href="/inventory/products" class="breadcrumb red-text text-darken-3">Productos</a>
                 <a href="#!" class="breadcrumb grey-text text-darken-3">Listado</a>
 
                 <ul class="right">
