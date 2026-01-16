@@ -5,8 +5,6 @@ from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 def signin(req):
 
-    
-
     form = AuthenticationForm()
 
     if req.method == 'GET':
