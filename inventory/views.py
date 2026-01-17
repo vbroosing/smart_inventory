@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from .decorators import group_required, multi_group_required
+# from django.contrib.auth.decorators import login_required
+# from .decorators import group_required, multi_group_required
 
 # @login_required
 def products(req):
